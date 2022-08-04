@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap');
+
+#root {
+  background: linear-gradient(179.27deg, #2DB3DD 0.82%, #FFFFFF 86.37%);
+  background-attachment: fixed;
+  height: 100%;
+  min-height: 100vh;
+  font-family: 'Inter';
+}
+
+.main a{
+  text-decoration: none;
+}
+
+.header {
+  padding: 60px 0 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  row-gap: 30px;
+  column-gap: 100px;
+}
+
+.header_text {
+  font-size: 64px;
+  line-height: 77px;
+}
+
+.header_input {
+  background: #D8F1F9;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-size: 36px;
+  line-height: 40px;
+  padding: 15px 10px;
+  max-width: 405px;
+  height: 60px;
+  width: 100%;
+}
+
+.header_input:focus {
+  outline: none;
+}
+
+.bookCard {
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  font-weight: 100;
+}
+
+.bookCard_image img{
+  width: 180px;
+  height: 180px;
+  object-fit: cover
+}
+
+.bookCard_author {
+  font-size: 14px;
+  line-height: 17px;
+  margin: 20px 0;
+}
+
+.bookCard_title {
+  font-size: 32px;
+line-height: 39px;
+}
+
+
+
+.Loading {
+  text-align: center;
+  font-size: 36px;
+}
+
+.Error {
+  color: red;
+}
