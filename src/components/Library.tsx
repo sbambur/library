@@ -22,8 +22,6 @@ function Library() {
   });
   const [currentBooksList, setCurrentBookList] = useState(books.slice(0, amountBooks));
 
-  console.log('render');
-
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchParam(e.target.value);
   };
@@ -87,7 +85,7 @@ function Library() {
             {book.returnDate ? (
               <BookItem data={book} />
             ) : (
-              <NavLink to={`/book${index}`}>
+              <NavLink to={`/book/${index}`}>
                 <BookItem data={book} />
               </NavLink>
             )}

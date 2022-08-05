@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap');
 
 #root {
-  background: linear-gradient(179.27deg, #2DB3DD 0.82%, #FFFFFF 86.37%);
+  background: linear-gradient(179.27deg, #2db3dd 0.82%, #ffffff 86.37%);
   background-attachment: fixed;
   height: 100%;
   min-height: 100vh;
   font-family: 'Inter';
 }
 
-.main a{
+.main a {
   text-decoration: none;
 }
 
@@ -28,7 +28,7 @@
 }
 
 .header_input {
-  background: #D8F1F9;
+  background: #d8f1f9;
   border: 1px solid #000000;
   border-radius: 4px;
   font-size: 36px;
@@ -87,10 +87,10 @@
   line-height: 44px;
 }
 
-.bookCard_image img{
+.bookCard_image img {
   width: 180px;
   height: 180px;
-  object-fit: cover
+  object-fit: cover;
 }
 
 .bookCard_author {
@@ -101,16 +101,5 @@
 
 .bookCard_title {
   font-size: 32px;
-line-height: 39px;
-}
-
-
-
-.Loading {
-  text-align: center;
-  font-size: 36px;
-}
-
-.Error {
-  color: red;
+  line-height: 39px;
 }
