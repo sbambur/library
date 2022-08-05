@@ -10,17 +10,19 @@ function Library() {
   const { books, bookCounter } = useStore();
 
   const [searchParam, setSearchParam] = useState('');
+  const [scrollPosition] = useState(() => {
+    const persistedPosition = sessionStorage.getItem('scroll-position');
+    sessionStorage.removeItem('scroll-position');
+    return persistedPosition ? persistedPosition : null;
+  });
   const [amountBooks, setAmountBooks] = useState(() => {
-    const persistedId = sessionStorage.getItem('books-amount');
+    const persistedAmount = sessionStorage.getItem('books-amount');
     sessionStorage.removeItem('books-amount');
-    return persistedId ? Number(persistedId) : 9;
+    return persistedAmount ? Number(persistedAmount) : 9;
   });
   const [currentBooksList, setCurrentBookList] = useState(books.slice(0, amountBooks));
-  const [scrollPosition] = useState(() => {
-    const persistedId = sessionStorage.getItem('scroll-position');
-    sessionStorage.removeItem('scroll-position');
-    return persistedId ? persistedId : null;
-  });
+
+  console.log('render');
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchParam(e.target.value);
