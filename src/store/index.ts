@@ -1,5 +1,6 @@
-import { runInAction, makeObservable, observable, action } from 'mobx';
-import api from '../api';
+import { makeAutoObservable } from 'mobx';
+import { makePersistable, stopPersisting } from 'mobx-persist-store';
+import { mockbooks } from '../mock/book';
 
 export interface IBook {
   id: number;
@@ -10,39 +11,20 @@ export interface IBook {
 }
 
 export class BookStore {
-  books: IBook[] = [];
-  status = 'pending'; // "pending", "done" or "error"
+  books: IBook[] = mockbooks;
   bookCounter = 0;
-  isData = false; // if books already loaded, don't switch in "pending" status
 
   constructor() {
-    makeObservable(this, {
-      books: observable,
-      status: observable,
-      bookCounter: observable,
-      isData: observable,
-      fetchBooks: action.bound,
+    makeAutoObservable(this, {}, { autoBind: true });
+
+    makePersistable(this, {
+      name: 'BookStore',
+      properties: ['books'],
+      storage: window.localStorage,
     });
   }
 
-  async fetchBooks() {
-    if (!this.isData) {
-      this.status = 'pending';
-    }
-
-    try {
-      const books = await api.get('books');
-      runInAction(() => {
-        this.books = books;
-        this.status = 'done';
-        this.isData = true;
-      });
-    } catch (e) {
-      runInAction(() => {
-        this.status = 'error';
-      });
-    }
+  stopStore() {
+    stopPersisting(this);
   }
 }
-
-export default new BookStore();

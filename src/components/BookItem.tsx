@@ -1,10 +1,7 @@
+import { memo } from 'react';
 import { IBook } from '../store';
 
-interface BookItemProps {
-  data: IBook;
-}
-
-export function BookItem({ data }: BookItemProps) {
+function BookItem({ data }: { data: IBook }) {
   return (
     <div className='bookCard'>
       <div className='bookCard_image'>
@@ -15,3 +12,5 @@ export function BookItem({ data }: BookItemProps) {
     </div>
   );
 }
+
+export default memo(BookItem);
