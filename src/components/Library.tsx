@@ -1,30 +1,23 @@
 import { observer } from 'mobx-react-lite';
-import { ChangeEvent, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import useStore from '../hooks/useStore';
 import BookItem from './BookItem';
 import { debounce } from './utils/debounce';
 
-function Library() {
+const Library = () => {
   const { books, bookCounter } = useStore();
 
   const [searchParam, setSearchParam] = useState('');
-  const [scrollPosition] = useState(() => {
-    const persistedPosition = sessionStorage.getItem('scroll-position');
-    sessionStorage.removeItem('scroll-position');
-    return persistedPosition ? persistedPosition : null;
-  });
-  const [amountBooks, setAmountBooks] = useState(() => {
-    const persistedAmount = sessionStorage.getItem('books-amount');
-    sessionStorage.removeItem('books-amount');
-    return persistedAmount ? Number(persistedAmount) : 9;
-  });
+  const [scrollPosition] = useState(sessionStorage.getItem('scroll-position') || null);
+  const [amountBooks, setAmountBooks] = useState(
+    Number(sessionStorage.getItem('books-amount')) || 9
+  );
   const [currentBooksList, setCurrentBookList] = useState(books.slice(0, amountBooks));
 
-  const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchParam(e.target.value);
-  };
+  sessionStorage.removeItem('books-amount');
+  sessionStorage.removeItem('scroll-position');
 
   const scrollHandler = useCallback(
     (e: any) => {
@@ -41,32 +34,34 @@ function Library() {
     [amountBooks, books.length]
   );
 
-  const setScrolPosition = (scroll: number) => {
-    sessionStorage.setItem('scroll-position', JSON.stringify(scroll));
+  const setScrollPosition = (scroll: string) => {
+    sessionStorage.setItem('scroll-position', scroll);
   };
 
-  const debounceSetter = debounce(() => setScrolPosition(window.pageYOffset), 500);
+  const debounceSetter = debounce(
+    () => setScrollPosition(String(window.pageYOffset)),
+    500
+  );
 
   useEffect(() => {
     window.scrollTo(0, Number(scrollPosition));
   }, []);
 
   useEffect(() => {
-    sessionStorage.setItem('books-amount', JSON.stringify(amountBooks));
+    sessionStorage.setItem('books-amount', String(amountBooks));
 
     if (books.length !== currentBooksList.length) {
       setCurrentBookList(books.slice(0, amountBooks));
     }
-  }, [books, amountBooks, currentBooksList.length]);
 
-  useEffect(() => {
     document.addEventListener('scroll', debounceSetter);
     document.addEventListener('scroll', scrollHandler);
+
     return () => {
       document.removeEventListener('scroll', debounceSetter);
       document.removeEventListener('scroll', scrollHandler);
     };
-  }, [debounceSetter, scrollHandler]);
+  }, [books, amountBooks, currentBooksList.length, debounceSetter, scrollHandler]);
 
   return (
     <div className='main'>
@@ -76,7 +71,7 @@ function Library() {
           className='header_input'
           type='text'
           value={searchParam}
-          onChange={handleInput}
+          onChange={(e) => setSearchParam(e.target.value)}
         />
       </div>
       <Row md={2} xs={1} lg={3} className='g-3'>
@@ -94,6 +89,6 @@ function Library() {
       </Row>
     </div>
   );
-}
+};
 
 export default observer(Library);

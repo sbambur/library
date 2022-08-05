@@ -8,6 +8,6 @@ interface StoreContextProviderProps {
 const store = new BookStore();
 export const StoreContext = createContext(store);
 
-export function StoreContextProvider({ children }: StoreContextProviderProps) {
+export const StoreContextProvider = ({ children }: StoreContextProviderProps) => {
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>;
-}
+};
