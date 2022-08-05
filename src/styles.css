@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&display=swap');
 
 #root {
   background: linear-gradient(179.27deg, #2DB3DD 0.82%, #FFFFFF 86.37%);
@@ -44,10 +44,47 @@
 }
 
 .bookCard {
+  position: relative;
   text-align: center;
   color: black;
   text-decoration: none;
   font-weight: 100;
+  transition: background-color 0.2s ease-out;
+}
+
+.bookCard:not(.locked):hover {
+  background-color: #00000030;
+}
+
+.bookCard.locked:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #d3d3d3c8;
+  z-index: 10;
+}
+
+.returnDate_message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 15;
+}
+
+.returnDate_message > p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
 }
 
 .bookCard_image img{

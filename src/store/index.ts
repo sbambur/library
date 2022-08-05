@@ -6,6 +6,7 @@ export interface IBook {
   id: number;
   title: string;
   author: string;
+  returnDate: string | null;
   description: string;
   image: string;
 }

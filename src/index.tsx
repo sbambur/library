@@ -9,11 +9,9 @@ import './styles.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <React.StrictMode>
-    <StoreContextProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </StoreContextProvider>
-  </React.StrictMode>
+  <StoreContextProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StoreContextProvider>
 );
