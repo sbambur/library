@@ -16,14 +16,13 @@ const Library = () => {
   sessionStorage.removeItem('scroll-position');
 
   const scrollHandler = useCallback(() => {
-    if (
+    const scrollDiff =
       document.documentElement.scrollHeight -
         (document.documentElement.scrollTop + window.innerHeight) <
-      100
-    ) {
-      if (amountBooks < books.length) {
-        setAmountBooks((prevState) => prevState + 9);
-      }
+      100;
+
+    if (scrollDiff && amountBooks < books.length) {
+      setAmountBooks((prevState) => prevState + 9);
     }
   }, [amountBooks, books.length]);
 
