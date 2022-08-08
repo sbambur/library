@@ -1,16 +1,12 @@
 import { observer } from 'mobx-react-lite';
 import { useCallback, useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { NavLink } from 'react-router-dom';
+import { Row } from 'react-bootstrap';
 import useStore from '../hooks/useStore';
 import BookItem from './BookItem';
-import { debounce } from './utils/debounce';
 
 const Library = () => {
   const { books, bookCounter } = useStore();
-
   const [searchParam, setSearchParam] = useState('');
-  const [scrollPosition] = useState(sessionStorage.getItem('scroll-position') || null);
   const [amountBooks, setAmountBooks] = useState(
     Number(sessionStorage.getItem('books-amount')) || 9
   );
@@ -19,33 +15,24 @@ const Library = () => {
   sessionStorage.removeItem('books-amount');
   sessionStorage.removeItem('scroll-position');
 
-  const scrollHandler = useCallback(
-    (e: any) => {
-      if (
-        e.target.documentElement.scrollHeight -
-          (e.target.documentElement.scrollTop + window.innerHeight) <
-        100
-      ) {
-        if (amountBooks < books.length) {
-          setAmountBooks((prevState) => prevState + 9);
-        }
+  const scrollHandler = useCallback(() => {
+    if (
+      document.documentElement.scrollHeight -
+        (document.documentElement.scrollTop + window.innerHeight) <
+      100
+    ) {
+      if (amountBooks < books.length) {
+        setAmountBooks((prevState) => prevState + 9);
       }
-    },
-    [amountBooks, books.length]
-  );
-
-  const setScrollPosition = (scroll: string) => {
-    sessionStorage.setItem('scroll-position', scroll);
-  };
-
-  const debounceSetter = debounce(
-    () => setScrollPosition(String(window.pageYOffset)),
-    500
-  );
+    }
+  }, [amountBooks, books.length]);
 
   useEffect(() => {
-    window.scrollTo(0, Number(scrollPosition));
-  }, []);
+    document.addEventListener('scroll', scrollHandler);
+    return () => {
+      document.removeEventListener('scroll', scrollHandler);
+    };
+  }, [scrollHandler]);
 
   useEffect(() => {
     sessionStorage.setItem('books-amount', String(amountBooks));
@@ -53,15 +40,7 @@ const Library = () => {
     if (books.length !== currentBooksList.length) {
       setCurrentBookList(books.slice(0, amountBooks));
     }
-
-    document.addEventListener('scroll', debounceSetter);
-    document.addEventListener('scroll', scrollHandler);
-
-    return () => {
-      document.removeEventListener('scroll', debounceSetter);
-      document.removeEventListener('scroll', scrollHandler);
-    };
-  }, [books, amountBooks, currentBooksList.length, debounceSetter, scrollHandler]);
+  }, [books, amountBooks, currentBooksList.length]);
 
   return (
     <div className='main'>
@@ -75,16 +54,8 @@ const Library = () => {
         />
       </div>
       <Row md={2} xs={1} lg={3} className='g-3'>
-        {currentBooksList.map((book, index) => (
-          <Col key={book.id}>
-            {book.returnDate ? (
-              <BookItem data={book} />
-            ) : (
-              <NavLink to={`/book/${index}`}>
-                <BookItem data={book} />
-              </NavLink>
-            )}
-          </Col>
+        {currentBooksList.map((book) => (
+          <BookItem key={book.id} data={book} />
         ))}
       </Row>
     </div>
