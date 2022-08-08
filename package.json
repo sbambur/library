@@ -8,7 +8,9 @@
     "@types/react-dom": "^18.0.6",
     "bootstrap": "^5.2.0",
     "mobx": "^6.6.1",
+    "mobx-persist-store": "^1.0.6",
     "mobx-react-lite": "^3.4.0",
+    "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",
     "react-dom": "^18.2.0",
@@ -20,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "json-server database/index.json --port 3001 --routes database/routes.json"
   },
   "eslintConfig": {
     "extends": [
