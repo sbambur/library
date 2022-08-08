@@ -26,22 +26,21 @@ const Library = () => {
     }
   }, [amountBooks, books.length]);
 
-  const debounceFilter = debounce(
-    () =>
-      setCurrentBookList(
-        books
-          .filter((book) => book.title.toLowerCase().includes(searchParam.toLowerCase()))
-          .slice(0, amountBooks)
-      ),
-    500
-  );
+  const debounceFilter = debounce(() => {
+    const filteredList =
+      searchParam.length >= 2
+        ? books.filter(
+            (book) =>
+              book.title.toLowerCase().includes(searchParam.toLowerCase()) ||
+              book.description.toLowerCase().includes(searchParam.toLowerCase())
+          )
+        : books;
+
+    setCurrentBookList(filteredList.slice(0, amountBooks));
+  }, 500);
 
   useEffect(() => {
-    if (searchParam.length >= 2) {
-      debounceFilter();
-    } else {
-      setCurrentBookList(books.slice(0, amountBooks));
-    }
+    debounceFilter();
   }, [searchParam]);
 
   useEffect(() => {
