@@ -3,17 +3,17 @@ import { useCallback, useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import useStore from '../hooks/useStore';
 import BookItem from './BookItem';
+import { debounce } from './utils/debounce';
 
 const Library = () => {
   const { books, bookCounter } = useStore();
   const [searchParam, setSearchParam] = useState('');
-  const [amountBooks, setAmountBooks] = useState(
-    Number(sessionStorage.getItem('books-amount')) || 9
-  );
+  const [amountBooks, setAmountBooks] = useState(() => {
+    const amountFromStorage = Number(sessionStorage.getItem('books-amount')) || 9;
+    sessionStorage.removeItem('books-amount');
+    return amountFromStorage;
+  });
   const [currentBooksList, setCurrentBookList] = useState(books.slice(0, amountBooks));
-
-  sessionStorage.removeItem('books-amount');
-  sessionStorage.removeItem('scroll-position');
 
   const scrollHandler = useCallback(() => {
     const scrollDiff =
@@ -25,6 +25,23 @@ const Library = () => {
       setAmountBooks((prevState) => prevState + 9);
     }
   }, [amountBooks, books.length]);
+
+  const debounceFilter = debounce(() => {
+    const filteredList =
+      searchParam.length >= 2
+        ? books.filter(
+            (book) =>
+              book.title.toLowerCase().includes(searchParam.toLowerCase()) ||
+              book.description.toLowerCase().includes(searchParam.toLowerCase())
+          )
+        : books;
+
+    setCurrentBookList(filteredList.slice(0, amountBooks));
+  }, 500);
+
+  useEffect(() => {
+    debounceFilter();
+  }, [searchParam]);
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
@@ -39,7 +56,7 @@ const Library = () => {
     if (books.length !== currentBooksList.length) {
       setCurrentBookList(books.slice(0, amountBooks));
     }
-  }, [books, amountBooks, currentBooksList.length]);
+  }, [amountBooks]);
 
   return (
     <div className='main'>
