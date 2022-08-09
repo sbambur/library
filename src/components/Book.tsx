@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useReturnDate } from '../hooks/useReturnDate';
 import useStore from '../hooks/useStore';
 import { IBook } from '../store';
 
@@ -10,7 +11,8 @@ const Book = () => {
   const [showModal, setShowModal] = useState(false);
   const [date, setDate] = useState('');
   const navigate = useNavigate();
-  const { author, title, description, image } = books.find(
+  const getReturnDate = useReturnDate();
+  const { author, title, description, image, returnDate } = books.find(
     (book) => book.id === Number(id)
   ) as IBook;
 
@@ -58,6 +60,22 @@ const Book = () => {
           </div>
         </div>
       </Modal>
+
+      {returnDate && (
+        <Modal show={true}>
+          <div className='modal_inner'>
+            <div className='return_date_info'>
+              <p>До возврата:</p>
+              <p>{getReturnDate(returnDate)}</p>
+            </div>
+            <div className='controls justify-content-center'>
+              <button className='button dark small' onClick={() => navigate('/')}>
+                Вернуться на главную
+              </button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </>
   );
 };

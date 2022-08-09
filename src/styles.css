@@ -75,7 +75,7 @@ a:not(.locked) .bookCard:hover {
   z-index: 10;
 }
 
-.bookCard_returnDate {
+.return_date {
   position: absolute;
   top: 0;
   left: 0;
@@ -88,7 +88,7 @@ a:not(.locked) .bookCard:hover {
   z-index: 15;
 }
 
-.bookCard_returnDate > p {
+.return_date_info > p {
   margin: 0;
   font-weight: 700;
   font-size: 36px;
@@ -134,7 +134,8 @@ a:not(.locked) .bookCard:hover {
 .button.small {
   font-size: 24px;
   line-height: 58px;
-  width: 185px;
+  min-width: 185px;
+  width: fit-content;
   height: 58px;
 }
 
