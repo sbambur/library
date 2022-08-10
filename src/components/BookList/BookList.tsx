@@ -1,11 +1,12 @@
 import { observer } from 'mobx-react-lite';
 import { useCallback, useEffect, useState } from 'react';
 import { Row } from 'react-bootstrap';
-import useStore from '../hooks/useStore';
-import BookItem from './BookItem';
-import { debounce } from './utils/debounce';
+import useStore from '../../hooks/useStore';
+import { BookItem } from '../BookItem';
+import { debounce } from '../utils/debounce';
+import './style.css';
 
-const Library = () => {
+export const BookList = observer(() => {
   const { books, bookCounter } = useStore();
   const [searchParam, setSearchParam] = useState('');
   const [amountBooks, setAmountBooks] = useState(() => {
@@ -76,6 +77,4 @@ const Library = () => {
       </Row>
     </div>
   );
-};
-
-export default observer(Library);
+});

@@ -1,23 +1,24 @@
-import moment from 'moment';
 import { memo } from 'react';
 import { Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { IBook } from '../store';
+import { useReturnDate } from '../../hooks/useReturnDate';
+import { IBook } from '../../store';
+import './style.css';
 
-const BookItem = ({ data }: { data: IBook }) => {
+export const BookItem = memo(({ data }: { data: IBook }) => {
   const { returnDate, title, author, image, id } = data;
-
-  const diffDuration = moment.duration(moment(returnDate).diff(moment()));
-  const timesLeft = `${diffDuration.days()}:${diffDuration.hours()}:${diffDuration.minutes()}`;
+  const getReturnDate = useReturnDate();
 
   return (
     <Col>
       <NavLink to={`/book/${id}`} className={`${returnDate && 'locked'}`}>
         <div className='bookCard pt-4'>
           {returnDate && (
-            <div className='bookCard_returnDate'>
-              <p>До возврата:</p>
-              <p>{moment(timesLeft, 'DD-hh-mm').format('DD:hh:mm')}</p>
+            <div className='return_date'>
+              <div className='return_date_info'>
+                <p>До возврата:</p>
+                <p>{getReturnDate(returnDate)}</p>
+              </div>
             </div>
           )}
 
@@ -30,6 +31,4 @@ const BookItem = ({ data }: { data: IBook }) => {
       </NavLink>
     </Col>
   );
-};
-
-export default memo(BookItem);
+});

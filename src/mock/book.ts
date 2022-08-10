@@ -5,7 +5,7 @@ export const mockbooks = [
     author: 'Гоголь Н.В.',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Произведение Николая Васильевича Гоголя, жанр которого сам автор обозначил как поэма. Изначально задумано как трёхтомник. Первый том был издан в 1842 году. Практически готовый второй том был утерян, но сохранилось несколько глав в черновиках. Третий том не был начат, о нём остались только отдельные сведения.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
@@ -15,7 +15,7 @@ export const mockbooks = [
     author: 'Булгакова М.А.',
     returnDate: '2022-08-28T15:00:00.000Z',
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Роман Михаила Афанасьевича Булгакова, работа над которым началась в декабре 1928 года и продолжалась вплоть до смерти писателя. Роман относится к незавершённым произведениям; редактирование и сведение воедино черновых записей осуществляла после смерти мужа вдова писателя — Елена Сергеевна. Первая версия романа, имевшая названия «Копыто инженера», «Чёрный маг» и другие, была уничтожена Булгаковым в 1930 году. В последующих редакциях среди героев произведения появились автор романа о Понтии Пилате и его возлюбленная. Окончательное название — «Мастер и Маргарита» — оформилось в 1937 году.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
@@ -25,7 +25,7 @@ export const mockbooks = [
     author: 'Достоевский Ф.М.',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Социально-психологический и социально-философский роман Фёдора Михайловича Достоевского, над которым писатель работал в 1865—1866 годах. Впервые опубликован в 1866 году в журнале «Русский вестник» (№ 1, 2, 4, 6—8, 11, 12). Через год вышло в свет отдельное издание, структура которого была немного изменена по сравнению с журнальной редакцией; кроме того, автор внёс в книжный вариант ряд сокращений и стилистических правок.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
@@ -35,7 +35,7 @@ export const mockbooks = [
     author: 'Майер С.',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Первая книга серии «Сумерки» писательницы Стефани Майер, в которой рассказывается о любви обычной семнадцатилетней девушки Изабеллы Свон и вампира Эдварда Каллена. Книга вышла в 2005 году. Вампирский роман, первое издание которого только в США разошлось рекордным тиражом 100 000 экземпляров и вошло в список бестселлеров New York Times',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
@@ -45,7 +45,7 @@ export const mockbooks = [
     author: 'Колин Маккалоу',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Семейная сага австралийской писательницы Колин Маккалоу, опубликованная в 1977 году. Роман стал бестселлером. Согласно исследованиям, проведённым одним из лондонских университетов, каждую минуту в мире продается два экземпляра этого романа. ',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
@@ -55,7 +55,7 @@ export const mockbooks = [
     author: 'Даниель Дефо',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Роман английского писателя Даниэля Дефо, впервые опубликованный в апреле 1719 года, повествующий о нравственном возрождении человека в общении с природой и обессмертивший имя автора.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
@@ -65,7 +65,7 @@ export const mockbooks = [
     author: 'Маргарет Митчелл',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Роман американской писательницы Маргарет Митчелл, события которого происходят в южных штатах США в 1860-х годах, во время и после гражданской войны. Роман вышел 30 июня 1936 года и стал одним из самых знаменитых бестселлеров американской литературы. ',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
@@ -75,7 +75,7 @@ export const mockbooks = [
     author: 'Пауло Коэльо',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Роман авторства Пауло Коэльо, изданный в 1988 году и ставший мировым бестселлером. Издан более чем в 117 странах мира, переведён на 81 язык, в том числе на High Valyrian. Основной сюжет взят из европейского фольклора: по классификации фольклорных сюжетов Аарне-Томпсона-Утера — сюжет 1645 «Сокровище дома».',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
@@ -85,127 +85,127 @@ export const mockbooks = [
     author: 'Антуан Де Сент-Экзюпери',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Аллегорическая повесть-сказка, наиболее известное произведение Антуана де Сент-Экзюпери. Сказка рассказывает о Маленьком принце, который посещает различные планеты в космосе, включая Землю. Книга обращается к темам одиночества, дружбы, любви и утраты.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 10,
-    title: 'Унесенные ветром',
-    author: 'Маргарет Митчелл',
+    title: 'Собачье сердце',
+    author: 'Михаил Булгаков',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Удивительно тонкая и саркастическая история о людях и их пороках. История об эксперименте, который доказал, что из животного можно сделать человека, а вот вывести «животное» из человека нельзя.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 11,
-    title: 'Алхимик',
-    author: 'Пауло Коэльо',
+    title: 'Три товарища',
+    author: 'Эрих Мария Ремарк',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Рассказать о чем повествует этот роман невозможно. Роман нужно читать, и тогда придет понимание, что это не просто история, а исповедь. Исповедь о любви, дружбе, боли. История отчаяния и борьбы.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 12,
-    title: 'Маленький принц',
-    author: 'Антуан Де Сент-Экзюпери',
+    title: 'Над пропастью во ржи',
+    author: 'Джером Сэлинджер',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'История подростка, который своими глазами показывает свое восприятие мира, точку мировоззрения, отречение от привычных принципов и устоев морали общества, которые не вписываются в его индивидуальные рамки.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 13,
-    title: 'Унесенные ветром',
-    author: 'Маргарет Митчелл',
+    title: 'Герой нашего времени',
+    author: 'Михаил Лермонтов',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Лирико-психологический роман, который повествует о человеке со сложным характером. Автор показывает его с разных сторон. А нарушенная хронология событий, заставляет полностью погрузиться в повествование.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 14,
-    title: 'Алхимик',
-    author: 'Пауло Коэльо',
+    title: 'Приключения Шерлока Холмса',
+    author: 'Артур Конан Дойл',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Легендарные расследования великого сыщика Шерлока, которые раскрывают подлость человеческой души. Истории, которые рассказывает друг и помощник.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 15,
-    title: 'Маленький принц',
-    author: 'Антуан Де Сент-Экзюпери',
+    title: 'Портрет Дориана Грея',
+    author: 'Оскар Уайльд',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'История о самолюбии, эгоизме и прочной душе. История, которая наглядно показывает, что может случиться с душой человека, мучаемой пороками.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 16,
-    title: 'Унесенные ветasdaром',
-    author: 'Маргарет Митчелл',
+    title: 'Властелин колец',
+    author: 'Джон Рональд Руэл Толкин',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Фантастическая трилогия о людях и нелюдях, которые попали под власть Кольца Всевластия и его владыки Саурона. История о тех, кто готов ради дружбы и спасения мира, пожертвовать самым дорогим и даже своей жизнью.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 17,
-    title: 'Алхas daимик',
-    author: 'Пауло Коэльо',
+    title: 'Крестный отец',
+    author: 'Марио Пьюзо',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Роман об одной из самых могущественных мафиозных семей Америки прошлого века – семье Корлеоне. Многим известен фильм, так что пора приниматься за чтение.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 18,
-    title: 'Маленькasd ий принц',
-    author: 'Антуан Де Сент-Экзюпери',
+    title: 'Триумфальная арка',
+    author: 'Эрих Мария Ремарк',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'После Первой Мировой войны множество эмигрантов оказались во Франции. В их числе и талантливый немецкий хирург Равик. Это история его жизни и любви на фоне пережитой войны.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 19,
-    title: 'Унесен asdные ветром',
-    author: 'Маргарет Митчелл',
+    title: 'Вино из одуванчиков',
+    author: 'Рэй Брэдбери',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Войдите в светлый мир двенадцатилетнего мальчика и проживите с ним одно лето, наполненное событиями радостными и печальными, загадочными и тревожными.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 20,
-    title: 'Алхимик aa ',
-    author: 'Пауло Коэльо',
+    title: 'Грозовой перевал',
+    author: 'Эмили Бронте',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'В уединенном поместье живет семья, у которой в доме царит напряженная атмосфера. Сложные отношения имеют глубокие корни, которые скрываются в прошлом. История Хитклифа и Кэтрин не оставит равнодушным ни одного читателя.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
   {
     id: 21,
-    title: 'Маленькиasй принц',
-    author: 'Антуан Де Сент-Экзюпери',
+    title: 'Зеленая миля',
+    author: 'Стивен Кинг',
     returnDate: null,
     description:
-      ' Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eligendi amet magni nam eos numquam ducimus nihil ex molestiae eum sequi cupiditate consequatur, id ullam velit tempora officiis quod. Recusandae, fugiat.',
+      'Пол Эджкомб бывший сотрудник тюрьмы, который служил в блоке для осужденных на смертную казнь. Он рассказывает историю жизни смертников, которым суждено было пройти Зеленую милю.',
     image:
       'https://images.freeimages.com/images/large-previews/d6f/open-book-1531710.jpg',
   },
