@@ -1,10 +1,11 @@
 import { memo } from 'react';
 import { Col } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
-import { useReturnDate } from '../hooks/useReturnDate';
-import { IBook } from '../store';
+import { useReturnDate } from '../../hooks/useReturnDate';
+import { IBook } from '../../store';
+import './style.css';
 
-const BookItem = ({ data }: { data: IBook }) => {
+export const BookItem = memo(({ data }: { data: IBook }) => {
   const { returnDate, title, author, image, id } = data;
   const getReturnDate = useReturnDate();
 
@@ -30,6 +31,4 @@ const BookItem = ({ data }: { data: IBook }) => {
       </NavLink>
     </Col>
   );
-};
-
-export default memo(BookItem);
+});

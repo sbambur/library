@@ -1,0 +1,64 @@
+.locked {
+  pointer-events: none;
+}
+
+.bookCard {
+  position: relative;
+  text-align: center;
+  color: black;
+  text-decoration: none;
+  font-weight: 100;
+  transition: background-color 0.2s ease-out;
+}
+
+a:not(.locked) .bookCard:hover {
+  background-color: #00000030;
+}
+
+.locked .bookCard:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #d3d3d3c8;
+  z-index: 10;
+}
+
+.return_date {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 15;
+}
+
+.return_date_info > p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 44px;
+}
+
+.bookCard_image img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+}
+
+.bookCard_author {
+  font-size: 14px;
+  line-height: 17px;
+  margin: 20px 0;
+}
+
+.bookCard_title {
+  font-size: 32px;
+  line-height: 39px;
+}

@@ -1,0 +1,51 @@
+html {
+  scroll-behavior: unset !important;
+}
+
+#root {
+  background: linear-gradient(179.27deg, #2db3dd 0.82%, #ffffff 86.37%);
+  background-attachment: fixed;
+  height: 100%;
+  min-height: 100vh;
+  font-family: 'Inter';
+}
+
+input:focus {
+  outline: none;
+}
+
+.button {
+  width: 295px;
+  height: 72px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+  font-weight: 300;
+  font-size: 40px;
+  line-height: 72px;
+  padding: 0 20px;
+}
+
+.button.light {
+  background: #d8f1f9;
+}
+
+.button.dark {
+  background: #66c7e6;
+}
+
+.button.small {
+  font-size: 24px;
+  line-height: 58px;
+  min-width: 185px;
+  width: fit-content;
+  height: 58px;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}

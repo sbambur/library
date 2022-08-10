@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useReturnDate } from '../hooks/useReturnDate';
-import useStore from '../hooks/useStore';
-import { IBook } from '../store';
+import { useReturnDate } from '../../hooks/useReturnDate';
+import useStore from '../../hooks/useStore';
+import { IBook } from '../../store';
+import './style.css';
 
-const Book = () => {
+export const Book = () => {
   const { id } = useParams();
   const { books } = useStore();
   const [showModal, setShowModal] = useState(false);
@@ -15,11 +16,6 @@ const Book = () => {
   const { author, title, description, image, returnDate } = books.find(
     (book) => book.id === Number(id)
   ) as IBook;
-
-  const handleReadBook = () => {
-    console.log(date);
-    setShowModal(false);
-  };
 
   return (
     <>
@@ -54,7 +50,7 @@ const Book = () => {
               <span className='input_icon'></span>
               <input type='date' onChange={(e) => setDate(e.target.value)} />
             </div>
-            <button className='button dark small' onClick={handleReadBook}>
+            <button className='button dark small' onClick={() => setShowModal(false)}>
               Читать книгу
             </button>
           </div>
@@ -79,5 +75,3 @@ const Book = () => {
     </>
   );
 };
-
-export default Book;
