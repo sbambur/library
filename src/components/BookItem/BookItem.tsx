@@ -1,4 +1,7 @@
-import { memo, useState } from 'react';
+import { useState } from 'react';
+import { observer } from 'mobx-react-lite';
+import { when } from 'mobx';
+import moment from 'moment';
 import { NavLink } from 'react-router-dom';
 import { useReturnDate } from 'hooks/useReturnDate';
 import { useInterval } from 'hooks/useInterval';
@@ -6,10 +9,8 @@ import useStore from 'hooks/useStore';
 import { IBook } from 'store';
 import { Col } from 'react-bootstrap';
 import './style.css';
-import { when } from 'mobx';
-import moment from 'moment';
 
-export const BookItem = memo(({ data }: { data: IBook }) => {
+export const BookItem = observer(({ data }: { data: IBook }) => {
   const { returnDate, title, author, image, id } = data;
   const { ReturnBook } = useStore();
   const getReturnDate = useReturnDate();
