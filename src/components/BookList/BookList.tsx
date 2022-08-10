@@ -1,9 +1,10 @@
-import { observer } from 'mobx-react-lite';
 import { useCallback, useEffect, useState } from 'react';
-import { Row } from 'react-bootstrap';
-import useStore from '../../hooks/useStore';
+import { observer } from 'mobx-react-lite';
 import { BookItem } from '../BookItem';
-import { debounce } from '../utils/debounce';
+import useStore from 'hooks/useStore';
+import useDebounce from 'hooks/useDebounce';
+import { getBookingBook } from '../utils/bookingCounter';
+import { Row } from 'react-bootstrap';
 import './style.css';
 
 export const BookList = observer(() => {
@@ -25,24 +26,25 @@ export const BookList = observer(() => {
     if (scrollDiff && amountBooks < books.length) {
       setAmountBooks((prevState) => prevState + 9);
     }
-  }, [amountBooks, books.length]);
+  }, [amountBooks, books]);
 
-  const debounceFilter = debounce(() => {
-    const filteredList =
-      searchParam.length >= 2
-        ? books.filter(
-            (book) =>
-              book.title.toLowerCase().includes(searchParam.toLowerCase()) ||
-              book.description.toLowerCase().includes(searchParam.toLowerCase())
-          )
-        : books;
+  useDebounce(
+    () => {
+      const filteredList =
+        searchParam.length >= 2
+          ? books.filter(
+              (book) =>
+                book.title.toLowerCase().includes(searchParam.toLowerCase()) ||
+                book.description.toLowerCase().includes(searchParam.toLowerCase())
+            )
+          : books;
+      console.log('1');
 
-    setCurrentBookList(filteredList.slice(0, amountBooks));
-  }, 500);
-
-  useEffect(() => {
-    debounceFilter();
-  }, [searchParam]);
+      setCurrentBookList(filteredList.slice(0, amountBooks));
+    },
+    500,
+    [searchParam]
+  );
 
   useEffect(() => {
     document.addEventListener('scroll', scrollHandler);
@@ -52,17 +54,14 @@ export const BookList = observer(() => {
   }, [scrollHandler]);
 
   useEffect(() => {
+    setCurrentBookList(books.slice(0, amountBooks));
     sessionStorage.setItem('books-amount', String(amountBooks));
-
-    if (books.length !== currentBooksList.length) {
-      setCurrentBookList(books.slice(0, amountBooks));
-    }
-  }, [amountBooks]);
+  }, [books, amountBooks]);
 
   return (
     <div className='main'>
       <div className='header'>
-        <p className='header_text'>У вас на руках: {bookCounter} книг</p>
+        <p className='header_text'>У вас на руках: {getBookingBook(bookCounter)}</p>
         <input
           className='header_input'
           type='text'

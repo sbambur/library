@@ -4,9 +4,14 @@ import { useCallback } from 'react';
 export const useReturnDate = () => {
   const getReturnDate = useCallback((returnDate: string) => {
     const diffDuration = moment.duration(moment(returnDate).diff(moment()));
-    const timesLeft = `${diffDuration.days()}:${diffDuration.hours()}:${diffDuration.minutes()}`;
 
-    return moment(timesLeft, 'DD-hh-mm').format('DD:hh:mm');
+    const hours = diffDuration.days() * 24 + diffDuration.hours() || '0';
+    const minutesAndSeconds = moment(
+      `${diffDuration.minutes()}:${diffDuration.seconds()}`,
+      'mm-ss'
+    ).format(':mm:ss');
+
+    return hours + minutesAndSeconds;
   }, []);
 
   return getReturnDate;

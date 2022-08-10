@@ -1,21 +1,27 @@
 import { useState } from 'react';
-import { Modal } from 'react-bootstrap';
+import { observer } from 'mobx-react-lite';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useReturnDate } from '../../hooks/useReturnDate';
-import useStore from '../../hooks/useStore';
-import { IBook } from '../../store';
+import { ReturnBookModal } from './ReturnBookModal';
+import useStore from 'hooks/useStore';
+import { IBook } from 'store';
+import { Modal } from 'react-bootstrap';
 import './style.css';
 
-export const Book = () => {
+export const Book = observer(() => {
   const { id } = useParams();
-  const { books } = useStore();
+  const { books, BookingBook } = useStore();
   const [showModal, setShowModal] = useState(false);
   const [date, setDate] = useState('');
   const navigate = useNavigate();
-  const getReturnDate = useReturnDate();
   const { author, title, description, image, returnDate } = books.find(
     (book) => book.id === Number(id)
   ) as IBook;
+
+  const handleBookingBook = () => {
+    const newDate = new Date(date).toISOString();
+    id && BookingBook({ id, returnDate: newDate });
+    navigate('/');
+  };
 
   return (
     <>
@@ -50,28 +56,14 @@ export const Book = () => {
               <span className='input_icon'></span>
               <input type='date' onChange={(e) => setDate(e.target.value)} />
             </div>
-            <button className='button dark small' onClick={() => setShowModal(false)}>
+            <button className='button dark small' onClick={() => handleBookingBook()}>
               Читать книгу
             </button>
           </div>
         </div>
       </Modal>
 
-      {returnDate && (
-        <Modal show={true}>
-          <div className='modal_inner'>
-            <div className='return_date_info'>
-              <p>До возврата:</p>
-              <p>{getReturnDate(returnDate)}</p>
-            </div>
-            <div className='controls justify-content-center'>
-              <button className='button dark small' onClick={() => navigate('/')}>
-                Вернуться на главную
-              </button>
-            </div>
-          </div>
-        </Modal>
-      )}
+      {returnDate && <ReturnBookModal returnDate={returnDate} />}
     </>
   );
-};
+});

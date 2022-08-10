@@ -1,5 +1,5 @@
 import { makeAutoObservable } from 'mobx';
-import { makePersistable, stopPersisting } from 'mobx-persist-store';
+import { makePersistable } from 'mobx-persist-store';
 import { mockbooks } from '../mock/book';
 
 export interface IBook {
@@ -11,9 +11,13 @@ export interface IBook {
   image: string;
 }
 
+export interface IBookingBook {
+  id: string;
+  returnDate: string;
+}
+
 export class BookStore {
   books: IBook[] = mockbooks;
-  bookCounter = 0;
 
   constructor() {
     makeAutoObservable(this, {}, { autoBind: true });
@@ -25,7 +29,30 @@ export class BookStore {
     });
   }
 
-  stopStore() {
-    stopPersisting(this);
+  public ReturnBook = (id: number) => {
+    const updatedBooks = this.books.map((book) => {
+      if (book.id === id) {
+        book.returnDate = null;
+      }
+      return book;
+    });
+    this.books = updatedBooks;
+  };
+
+  public BookingBook = (bookingBook: IBookingBook) => {
+    const { id, returnDate } = bookingBook;
+
+    const updatedBooks = this.books.map((book) => {
+      if (book.id === Number(id)) {
+        book.returnDate = returnDate;
+      }
+      return book;
+    });
+    this.books = updatedBooks;
+  };
+
+  get bookCounter() {
+    const bookingBooks = this.books.filter((book) => book.returnDate).length;
+    return bookingBooks;
   }
 }
