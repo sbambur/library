@@ -1,21 +1,27 @@
 import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import moment from 'moment';
 import { useReturnDate } from 'hooks/useReturnDate';
 import { useInterval } from 'hooks/useInterval';
 import { Modal } from 'react-bootstrap';
+import useStore from 'hooks/useStore';
 
 interface ReturnBookModalProps {
   returnDate: string;
+  id: string;
 }
 
-export const ReturnBookModal: FC<ReturnBookModalProps> = ({ returnDate }) => {
+export const ReturnBookModal: FC<ReturnBookModalProps> = ({ returnDate, id }) => {
   const navigate = useNavigate();
+  const { ReturnBook } = useStore();
   const getReturnDate = useReturnDate();
   const [timeLeft, setTimeLeft] = useState(() =>
     returnDate ? getReturnDate(returnDate) : null
   );
 
   useInterval(() => {
+    moment() > moment(returnDate) && ReturnBook(Number(id));
+
     returnDate && setTimeLeft(getReturnDate(returnDate));
   }, returnDate);
 

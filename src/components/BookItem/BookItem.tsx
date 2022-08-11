@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
-import { when } from 'mobx';
 import moment from 'moment';
 import { NavLink } from 'react-router-dom';
 import { useReturnDate } from 'hooks/useReturnDate';
@@ -8,6 +7,7 @@ import { useInterval } from 'hooks/useInterval';
 import useStore from 'hooks/useStore';
 import { IBook } from 'store';
 import { Col } from 'react-bootstrap';
+import { ICONS } from 'public';
 import './style.css';
 
 export const BookItem = observer(({ data }: { data: IBook }) => {
@@ -18,12 +18,16 @@ export const BookItem = observer(({ data }: { data: IBook }) => {
     returnDate ? getReturnDate(returnDate) : null
   );
 
-  when(
-    () => moment(returnDate).format('LLL') === moment().format('LLL'),
-    () => ReturnBook(id)
-  );
+  const setReturn = useCallback(() => {
+    moment() > moment(returnDate) && ReturnBook(id);
+  }, [returnDate, id, ReturnBook]);
+
+  useEffect(() => {
+    setReturn();
+  }, [setReturn]);
 
   useInterval(() => {
+    setReturn();
     returnDate && setTimeLeft(getReturnDate(returnDate));
   }, returnDate);
 
@@ -39,7 +43,7 @@ export const BookItem = observer(({ data }: { data: IBook }) => {
 
             <div className='return_button'>
               <button className='button small' onClick={() => ReturnBook(id)}>
-                Вернуть книгу
+                Вернуть книгу <img src={ICONS.CheckMark} alt='checlmark' />
               </button>
             </div>
           </div>

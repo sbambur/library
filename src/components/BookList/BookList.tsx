@@ -5,6 +5,7 @@ import useStore from 'hooks/useStore';
 import useDebounce from 'hooks/useDebounce';
 import { getBookingBook } from '../utils/bookingCounter';
 import { Row } from 'react-bootstrap';
+import { ICONS } from 'public';
 import './style.css';
 
 export const BookList = observer(() => {
@@ -38,8 +39,6 @@ export const BookList = observer(() => {
                 book.description.toLowerCase().includes(searchParam.toLowerCase())
             )
           : books;
-      console.log('1');
-
       setCurrentBookList(filteredList.slice(0, amountBooks));
     },
     500,
@@ -62,12 +61,15 @@ export const BookList = observer(() => {
     <div className='main'>
       <div className='header'>
         <p className='header_text'>У вас на руках: {getBookingBook(bookCounter)}</p>
-        <input
-          className='header_input'
-          type='text'
-          value={searchParam}
-          onChange={(e) => setSearchParam(e.target.value)}
-        />
+
+        <div className='header_input'>
+          <img src={ICONS.Magnifier} alt='magnifier' />
+          <input
+            type='text'
+            value={searchParam}
+            onChange={(e) => setSearchParam(e.target.value)}
+          />
+        </div>
       </div>
       <Row md={2} xs={1} lg={3} className='g-3'>
         {currentBooksList.map((book) => (
