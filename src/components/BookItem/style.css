@@ -2,20 +2,28 @@
   pointer-events: none;
 }
 
-.bookCard {
+.book_card {
   position: relative;
   text-align: center;
+  transition: background-color 0.2s ease-out;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.book_card_inner {
   color: black;
   text-decoration: none;
   font-weight: 100;
-  transition: background-color 0.2s ease-out;
+  padding: 0 20px;
 }
 
-a:not(.locked) .bookCard:hover {
+.book_card:not(.locked):hover {
   background-color: #00000030;
 }
 
-.locked .bookCard:after {
+.locked.book_card:after,
+.return_date .return_button:after {
   content: '';
   position: absolute;
   top: 0;
@@ -26,7 +34,8 @@ a:not(.locked) .bookCard:hover {
   z-index: 10;
 }
 
-.return_date {
+.return_date,
+.return_date .return_button {
   position: absolute;
   top: 0;
   left: 0;
@@ -37,6 +46,28 @@ a:not(.locked) .bookCard:hover {
   justify-content: center;
   flex-direction: column;
   z-index: 15;
+  pointer-events: auto;
+}
+
+.return_date .return_button {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  justify-content: flex-end;
+}
+
+.return_date .return_button .button {
+  z-index: 15;
+  margin-bottom: 40px;
+  font-size: 20px;
+  line-height: 24px;
+  height: 46px;
+  width: 196px;
+  font-weight: 100;
+  padding: 0 10px;
+}
+
+.return_date:hover .return_button {
+  opacity: 1;
 }
 
 .return_date_info > p {
@@ -46,19 +77,19 @@ a:not(.locked) .bookCard:hover {
   line-height: 44px;
 }
 
-.bookCard_image img {
+.book_card_image img {
   width: 180px;
   height: 180px;
   object-fit: cover;
 }
 
-.bookCard_author {
+.book_card_author {
   font-size: 14px;
   line-height: 17px;
   margin: 20px 0;
 }
 
-.bookCard_title {
+.book_card_title {
   font-size: 32px;
   line-height: 39px;
 }

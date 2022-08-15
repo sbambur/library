@@ -1,21 +1,44 @@
 import { useState } from 'react';
-import { Modal } from 'react-bootstrap';
+import { observer } from 'mobx-react-lite';
+import moment from 'moment';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useReturnDate } from '../../hooks/useReturnDate';
-import useStore from '../../hooks/useStore';
-import { IBook } from '../../store';
+import { ReturnBookModal } from './ReturnBookModal';
+import useStore from 'hooks/useStore';
+import { IBook } from 'store';
+import { Modal } from 'react-bootstrap';
+import { CalendarWeek } from 'react-bootstrap-icons';
 import './style.css';
 
-export const Book = () => {
+export const Book = observer(() => {
   const { id } = useParams();
-  const { books } = useStore();
+  const { books, BookingBook } = useStore();
   const [showModal, setShowModal] = useState(false);
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState<string | null>(null);
+  const [errors, setErrors] = useState(false);
   const navigate = useNavigate();
-  const getReturnDate = useReturnDate();
   const { author, title, description, image, returnDate } = books.find(
     (book) => book.id === Number(id)
   ) as IBook;
+
+  const handleBookingBook = () => {
+    if (!date) {
+      setErrors(true);
+      return;
+    }
+    const newDate = new Date(date).toISOString();
+    id && BookingBook({ id, returnDate: newDate });
+    navigate('/');
+  };
+
+  const handleDateChange = (value: string) => {
+    if (moment(value) < moment()) {
+      setDate(null);
+      setErrors(true);
+      return;
+    }
+    setDate(value);
+    setErrors(false);
+  };
 
   return (
     <>
@@ -46,32 +69,22 @@ export const Book = () => {
           </div>
           <p>Установите время на чтение</p>
           <div className='controls'>
-            <div className='modal_input'>
-              <span className='input_icon'></span>
-              <input type='date' onChange={(e) => setDate(e.target.value)} />
+            <div className={`modal_input ${errors && 'error'}`}>
+              <CalendarWeek size={58} />
+              <input type='date' onChange={(e) => handleDateChange(e.target.value)} />
             </div>
-            <button className='button dark small' onClick={() => setShowModal(false)}>
+            <button
+              className='button dark small'
+              onClick={() => handleBookingBook()}
+              disabled={!date}
+            >
               Читать книгу
             </button>
           </div>
         </div>
       </Modal>
 
-      {returnDate && (
-        <Modal show={true}>
-          <div className='modal_inner'>
-            <div className='return_date_info'>
-              <p>До возврата:</p>
-              <p>{getReturnDate(returnDate)}</p>
-            </div>
-            <div className='controls justify-content-center'>
-              <button className='button dark small' onClick={() => navigate('/')}>
-                Вернуться на главную
-              </button>
-            </div>
-          </div>
-        </Modal>
-      )}
+      {returnDate && id && <ReturnBookModal returnDate={returnDate} id={id} />}
     </>
   );
-};
+});
