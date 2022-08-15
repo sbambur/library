@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
 import { BookItem } from '../BookItem';
 import useStore from 'hooks/useStore';
-import useDebounce from 'hooks/useDebounce';
+import { useDebounce } from 'hooks/useDebounce';
 import { getBookingBook } from '../utils/bookingCounter';
 import { Row } from 'react-bootstrap';
 import { ICONS } from 'public';
