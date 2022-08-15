@@ -3,13 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import { useReturnDate } from 'hooks/useReturnDate';
 import { useInterval } from 'hooks/useInterval';
-import { Modal } from 'react-bootstrap';
 import useStore from 'hooks/useStore';
-
-interface ReturnBookModalProps {
-  returnDate: string;
-  id: string;
-}
+import { ReturnBookModalProps } from './types';
+import { Modal } from 'react-bootstrap';
 
 export const ReturnBookModal: FC<ReturnBookModalProps> = ({ returnDate, id }) => {
   const navigate = useNavigate();

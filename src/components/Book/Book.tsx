@@ -6,7 +6,7 @@ import { ReturnBookModal } from './ReturnBookModal';
 import useStore from 'hooks/useStore';
 import { IBook } from 'store';
 import { Modal } from 'react-bootstrap';
-import { ICONS } from 'public';
+import { CalendarWeek } from 'react-bootstrap-icons';
 import './style.css';
 
 export const Book = observer(() => {
@@ -70,7 +70,7 @@ export const Book = observer(() => {
           <p>Установите время на чтение</p>
           <div className='controls'>
             <div className={`modal_input ${errors && 'error'}`}>
-              <img src={ICONS.Calendar} alt='calendar' />
+              <CalendarWeek size={58} />
               <input type='date' onChange={(e) => handleDateChange(e.target.value)} />
             </div>
             <button

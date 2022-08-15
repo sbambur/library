@@ -5,7 +5,7 @@ import useStore from 'hooks/useStore';
 import { useDebounce } from 'hooks/useDebounce';
 import { getBookingBook } from '../utils/bookingCounter';
 import { Row } from 'react-bootstrap';
-import { ICONS } from 'public';
+import { Search } from 'react-bootstrap-icons';
 import './style.css';
 
 export const BookList = observer(() => {
@@ -63,7 +63,7 @@ export const BookList = observer(() => {
         <p className='header_text'>У вас на руках: {getBookingBook(bookCounter)}</p>
 
         <div className='header_input'>
-          <img src={ICONS.Magnifier} alt='magnifier' />
+          <Search size={36} />
           <input
             type='text'
             value={searchParam}

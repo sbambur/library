@@ -7,7 +7,7 @@ import { useInterval } from 'hooks/useInterval';
 import useStore from 'hooks/useStore';
 import { IBook } from 'store';
 import { Col } from 'react-bootstrap';
-import { ICONS } from 'public';
+import { CheckLg } from 'react-bootstrap-icons';
 import './style.css';
 
 export const BookItem = observer(({ data }: { data: IBook }) => {
@@ -43,7 +43,7 @@ export const BookItem = observer(({ data }: { data: IBook }) => {
 
             <div className='return_button'>
               <button className='button small' onClick={() => ReturnBook(id)}>
-                Вернуть книгу <img src={ICONS.CheckMark} alt='checlmark' />
+                Вернуть книгу <CheckLg color='green' />
               </button>
             </div>
           </div>
